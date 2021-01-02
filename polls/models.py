@@ -11,6 +11,9 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+    def get_absolute_url(self):
+        return f'/polls/{self.pk}/'
+
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - timedelta(days=1)
 
